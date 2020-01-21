@@ -1,0 +1,6 @@
+CREATE TABLE InterviewBookTheme (
+	ID UNIQUEIDENTIFIER PRIMARY KEY NOT NULL,
+	ThemeName VARCHAR(25),
+	FontColor VARCHAR(25),
+	BackgroundColor VARCHAR(25)
+)

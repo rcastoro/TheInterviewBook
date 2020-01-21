@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Rocco Castoro - Full Stack Software Engineer</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Awesome Social Media Icons-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href=css/icons.css"> -->
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      
+      <a class="navbar-brand" href="#">The Interview Book</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="https://twitter.com/RuckusStudiosUS" class="fa fa-twitter"></a>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.linkedin.com/in/rocco-castoro-5082b262" class="fa fa-linkedin"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row align-items-center my-5">
+
+      <div class="col-lg-7">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="https://media-exp1.licdn.com/dms/image/C4E03AQHhxRpCJDmE2g/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=Ypufc4IYKe7KsXifhOfmgngEvDBNN-VRYhRIiRjk04M" alt="">
+      </div>
+
+      <!-- Sign up Area-->
+      <div class="col-lg-5">
+        <h1 class="font-weight-light">Sign up now to approve this interview</h1>
+        <button onclick="document.getElementById('signup').style.display='block'" style="width:auto;">Sign Up</button>
+    </div>
+    </div>
+
+    <!--Explaination of My work-->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+      <div class="card-body">
+        <p class="text-white m-0">
+          This is the web client for my interview app (thin client). The DAL layer lives on my IIS express server on my local machine. The DAL is written
+          in .NET Core 3 and ASP.NET, using SQL's (localdb) to persist data. The web client was initially written in React (which i did based on a friends suggestion, and was completely new to me).
+          I found as I was learning React, JQuery and React don't play nice together because they are both DOM manipulators.
+          So... the app was rewritten in vanilla javascript and JQuery based on the interview application initial parameters. 
+        </p>
+        <br/>
+        <br/>
+        <p class="text-white m-0">
+          The web-client is hosted on a public domain and the back-end ASP.NET API is hosted on my local machine but the URL
+          is provided to the internet via NGROK, which is a tunneling service. It provides my locally hosted API with a publicly accessible URL for my web client to call.
+        </p>
+        <br/>
+        <br/>
+        <p class="text-white m-0">
+          The users below consist of users stored in SQL's localdb on my machine at home, committed via the Sign Up button above.
+          When users sign up, the /api/InterviewBookUser POST verb is called, which persists the user to the localdb database. Then, the same api endpoint in GET verb mode is called to display.
+          The Hockey Teams available in the Sign Up drop down are also pulled from NHL.COM's API, via the backened ASP .NET application and are accessible via the /api/InterviewBookNHL GET verb request.
+          Validation on the forms is done via jquery as requested. Thank you for taking the time to view the interview book, I look forward to speaking with you!
+        </p>
+      </div>
+    </div>
+    
+    <!-- SIGN UP MODAL -->
+    <div id="signup" class="modal">
+      <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form class="modal-content" id="form_signup">
+          <div class="container">
+            <h1>Say Hi</h1>
+            <p>Please fill in this form to say hi.</p>
+            <hr>
+            <div id="dFirstName">
+              <label htmlFor="firstname">First Name: </label>
+              <input id="FirstName" name="FirstName" type="text" placeholder="FirstName" />
+          </div>
+          <div id="dLastName">
+              <label htmlFor="lastname">Last Name: </label>
+              <input id="LastName" name="LastName" type="text" placeholder="LastName" />
+          </div>
+          <div class="w-100"></div>
+          <div id="dEmail">
+              <label htmlFor="email">Email: </label>
+              <input id="Email" name="Email" type="text" placeholder="me@mydomain.com" />
+          </div>
+          <div id="dPhoneNumber">
+              <label htmlFor="phonenumber">Phone#: </label>
+              <input id="PhoneNumber" name="PhoneNumber" type="text" placeholder="1234567890" />
+          </div>
+          <div>
+              <label htmlFor="hockeyteamid">Hockey Team: </label>
+              <select class="form-control form-control-md" id="HockeyTeamID" name="HockeyTeamID">
+              </select>
+          </div>
+          <div id="dDOB">
+              <label htmlFor="dob">Date Of Birth: </label>
+              <input id="DOB" name="DOB" type="text" placeholder="DD/MM/YYYY" />
+          </div>
+          <label htmlFor="pepsiorcoke">Pepsi Or Coke: </label>
+          <select class="form-control form-control-md" id="PepsiOrCoke" name="PepsiOrCoke">
+              <option key="true">Pepsi</option>
+              <option key="false">Coke</option>
+          </select>
+          
+          <div class="clearfix">
+            <button type="button" onclick="document.getElementById('signup').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Sign Up</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <!-- Close modal when user click outside of modal-->
+    <script>
+      var modal = document.getElementById('signup');
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+              clearFormValidation();
+          }
+      }
+    </script>
+
+    <!-- Users -->
+      <div id="users" /><!--injected from index.js per user from our API Endpoint /api/InterviewBookUser-->
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Rocco Castoro - Full Stack Software Engineer</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="js/index.js" />
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
